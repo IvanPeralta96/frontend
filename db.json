@@ -1,0 +1,55 @@
+{
+  "movimientos": [
+    {
+      "fechaIng": "2022-08-19",
+      "descripcionIng": "Cambio tanque de bronce Ford Ranger 98",
+      "montoIng": 30000,
+      "fechaEg": "2022-08-19",
+      "descripcionEg": "Cambio tanque de bronce Ford Ranger 98",
+      "montoEg": 10000,
+      "naranjaX": null,
+      "mercadoPago": null,
+      "id": 1
+    },
+    {
+      "fechaIng": "2022-08-20",
+      "descripcionIng": "Cambio radiador Ford Ecosport",
+      "montoIng": 38000,
+      "fechaEg": "",
+      "descripcionEg": "",
+      "montoEg": null,
+      "naranjaX": null,
+      "mercadoPago": null,
+      "id": 2
+    },
+    {
+      "fechaIng": "2022-10-30",
+      "descripcionIng": "hola facu",
+      "montoIng": 44000,
+      "fechaEg": "2022-10-30",
+      "descripcionEg": "hola facu",
+      "montoEg": 10000,
+      "naranjaX": 20000,
+      "mercadoPago": null,
+      "id": 3
+    },
+    {
+      "fechaIng": "2022-10-31",
+      "descripcionIng": "hola celeee",
+      "montoIng": 20000,
+      "montoEg": null,
+      "naranjaX": null,
+      "mercadoPago": 10000,
+      "id": 4
+    },
+    {
+      "montoIng": null,
+      "fechaEg": "2022-11-01",
+      "descripcionEg": "Compra mercaderia",
+      "montoEg": null,
+      "naranjaX": null,
+      "mercadoPago": -15000,
+      "id": 5
+    }
+  ]
+}
