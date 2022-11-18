@@ -1,0 +1,18 @@
+/* Movimientos */
+.table{
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.colBlanca{
+    background:none;
+    text-align: right;
+}
+.colVerde{
+    background:none;
+    text-align: right;
+    color: white;
+}
+.colRoja{
+    text-align: right;
+}

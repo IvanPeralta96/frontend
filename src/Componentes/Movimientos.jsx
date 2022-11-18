@@ -1,3 +1,4 @@
+import "../Components.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
@@ -92,17 +93,55 @@ export default function Movimientos(props) {
 
 
   return (
-    <div class="container-xxxl">
-      <table class="table table-success table-striped table-sm border border-success">
+    <div class="container-xxl">
+      <table class="table table-success table-striped table-sm table-bordered">
         <thead>
           <tr>
-            <th colSpan="3">Total Ingresos</th>
-            <th>{sumaIng}</th>
-            <th colSpan="2">Total Gastos</th>
-            <th>{sumaEg}</th>
-            <th>{sumaIng - sumaEg}</th>
-            <th>{sumaNarX}</th>
-            <th>{sumaMP}</th>
+            <th colSpan="10" class="bg-primary"></th>
+          </tr>
+          <tr>
+            <th colSpan="3" class="colVerde bg-success">Introduzca fecha inicial</th>
+            <th colSpan="2" class="bg-light"></th>
+            <th colSpan="3" class="colBlanca bg-light">Ingresos</th>
+            <th colSpan="2" class="colBlanca bg-light"></th>
+          </tr>
+          <tr>
+            <th colSpan="3" class="colVerde bg-success">Introduzca fecha final</th>
+            <th colSpan="2" class="bg-light"></th>
+            <th colSpan="3" class="colBlanca bg-light">Gastos</th>
+            <th colSpan="2" class="colBlanca bg-light"></th>
+          </tr>
+          <tr><th colSpan="8" class="colBlanca bg-secondary">Diferencia</th><th colSpan="2" class="colVerde bg-success"></th></tr>
+          <tr>
+            <th colSpan="10" class="bg-primary"></th>
+          </tr>
+          <tr>
+            <th colSpan="3" class="colVerde bg-success">Introduzca el mes</th>
+            <th colSpan="2" class="bg-light"></th>
+            <th colSpan="3" class="colBlanca bg-light">Ingresos</th>
+            <th colSpan="2" class="colBlanca bg-light"></th>
+          </tr>
+          <tr>
+            <th colSpan="3" class="colVerde bg-success">Introduzca el año</th>
+            <th colSpan="2" class="bg-light"></th>
+            <th colSpan="3" class="colBlanca bg-light">Gastos</th>
+            <th colSpan="2" class="colBlanca bg-light"></th>
+          </tr> 
+          <tr><th colSpan="8" class="colBlanca bg-secondary">Diferencia</th><th colSpan="2" class="colVerde bg-success"></th></tr>
+
+          <tr>
+            <th colSpan="4" class="colRoja bg-danger">Total Ingresos</th>
+            <th colSpan="3" class="colRoja bg-danger">Total Gastos</th>
+            <th class="bg-danger">Total I-E</th>
+            <th class="bg-danger">Naranja X</th>
+            <th class="bg-danger">Mercado Pago</th>
+          </tr>
+          <tr>
+            <th colSpan="4" class="colBlanca">{sumaIng}</th>
+            <th colSpan="3" class="colBlanca">{sumaEg}</th>
+            <th class="colBlanca">{sumaIng - sumaEg}</th>
+            <th class="colBlanca">{sumaNarX}</th>
+            <th class="colBlanca">{sumaMP}</th>
           </tr>
           <tr class="table-group-divider">
             <th scope="col"></th>
@@ -113,8 +152,8 @@ export default function Movimientos(props) {
             <th scope="col">Descripción</th>
             <th scope="col">Precio</th>
             <th scope="col">Total</th>
-            <th scope="col">Naranja X</th>
-            <th scope="col">Mercado Pago</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody class="table-group-divider">
@@ -140,9 +179,13 @@ export default function Movimientos(props) {
             </>
           ))}
 
-          <button type="button" class="btn btn-primary" onClick={modalShow}>
+          </tbody>
+      </table>
+
+      <button type="button" class="btn btn-primary" onClick={modalShow}>
             Nuevo
           </button>
+
 
           <Modal show={show} onHide={modalClose} size="xl">
             <Modal.Header closeButton>
@@ -225,8 +268,6 @@ export default function Movimientos(props) {
               </button>
             </Modal.Footer>
           </Modal>
-        </tbody>
-      </table>
     </div>
   );
 }
