@@ -18,6 +18,7 @@ export default function Movimientos(props) {
   const [sumaEg, setSumaEg] = useState([])
   const [sumaNarX, setSumaNarX] = useState([])
   const [sumaMP, setSumaMP] = useState([])
+  const [inputDate, setInputDate] = useState("")
   
   useEffect(() => {
     const handlesumar = () => {
@@ -101,7 +102,7 @@ export default function Movimientos(props) {
           </tr>
           <tr>
             <th colSpan="3" class="colVerde bg-success">Introduzca fecha inicial</th>
-            <th colSpan="2" class="bg-light"></th>
+            <th colSpan="2" class="bg-light"><input type="date" value={inputDate} onChange={e=>setInputDate(e.target.value)} /></th>
             <th colSpan="3" class="colBlanca bg-light">Ingresos</th>
             <th colSpan="2" class="colBlanca bg-light"></th>
           </tr>

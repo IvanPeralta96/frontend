@@ -2,6 +2,9 @@ import './App.css';
 import Movimientos from './Componentes/Movimientos';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Navbar from "./Componentes/Navbar";
+
 
 const baseUrl = "http://localhost:3001";
 
@@ -17,7 +20,19 @@ function App() {
 
   return (
     <div class="container-xxl App">
-      <Movimientos baseUrl={baseUrl} movimientos={movimientos} setMovimientos={setMovimientos} />
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+              <Navbar />
+              <Movimientos movimientos={movimientos} baseUrl={baseUrl} />
+              </>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
