@@ -18,7 +18,8 @@ export default function Movimientos(props) {
   const [sumaEg, setSumaEg] = useState([])
   const [sumaNarX, setSumaNarX] = useState([])
   const [sumaMP, setSumaMP] = useState([])
-  const [inputDate, setInputDate] = useState("")
+  const [dateInicio, setDateInicio] = useState("")
+  const [dateFin, setDateFin] = useState("")
   
   useEffect(() => {
     const handlesumar = () => {
@@ -95,20 +96,20 @@ export default function Movimientos(props) {
 
   return (
     <div class="container-xxl">
-      <table class="table table-success table-striped table-sm table-bordered">
+      <table class="table table-success table-striped table-sm table-bordered align-middle mb-2">
         <thead>
           <tr>
             <th colSpan="10" class="bg-primary"></th>
           </tr>
           <tr>
             <th colSpan="3" class="colVerde bg-success">Introduzca fecha inicial</th>
-            <th colSpan="2" class="bg-light"><input type="date" value={inputDate} onChange={e=>setInputDate(e.target.value)} /></th>
+            <th colSpan="2" class="bg-light"><input type="date" value={dateInicio} onChange={e=>setDateInicio(e.target.value)} /></th>
             <th colSpan="3" class="colBlanca bg-light">Ingresos</th>
             <th colSpan="2" class="colBlanca bg-light"></th>
           </tr>
           <tr>
             <th colSpan="3" class="colVerde bg-success">Introduzca fecha final</th>
-            <th colSpan="2" class="bg-light"></th>
+            <th colSpan="2" class="bg-light"><input type="date" value={dateFin} onChange={e=>setDateFin(e.target.value)} /></th>
             <th colSpan="3" class="colBlanca bg-light">Gastos</th>
             <th colSpan="2" class="colBlanca bg-light"></th>
           </tr>
@@ -117,14 +118,12 @@ export default function Movimientos(props) {
             <th colSpan="10" class="bg-primary"></th>
           </tr>
           <tr>
-            <th colSpan="3" class="colVerde bg-success">Introduzca el mes</th>
-            <th colSpan="2" class="bg-light"></th>
+            <th colSpan="3" rowSpan="2" class="colVerde bg-success align-middle">Introduzca el mes</th>
+            <th colSpan="2" rowSpan="2" class="bg-light align-middle"><input type="month" /></th>
             <th colSpan="3" class="colBlanca bg-light">Ingresos</th>
             <th colSpan="2" class="colBlanca bg-light"></th>
           </tr>
           <tr>
-            <th colSpan="3" class="colVerde bg-success">Introduzca el año</th>
-            <th colSpan="2" class="bg-light"></th>
             <th colSpan="3" class="colBlanca bg-light">Gastos</th>
             <th colSpan="2" class="colBlanca bg-light"></th>
           </tr> 
@@ -162,8 +161,8 @@ export default function Movimientos(props) {
             <>
               <tr>
                 <td>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-danger" onClick={() => eliminarMovimiento(item.id)}>El</button>
+                  <div>
+                    <button type="button" class="btn btn-danger btn-sm me-1" onClick={() => eliminarMovimiento(item.id)}><i class="bi bi-trash"></i></button>
                     <ModificarMovimiento item={item} baseUrl={props.baseUrl} />
                   </div>
                 </td>
@@ -182,10 +181,11 @@ export default function Movimientos(props) {
 
           </tbody>
       </table>
-
-      <button type="button" class="btn btn-primary" onClick={modalShow}>
-            Nuevo
-          </button>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-primary mb-3" onClick={modalShow}>
+            Nuevo Movimiento
+        </button>
+      </div>
 
 
           <Modal show={show} onHide={modalClose} size="xl">

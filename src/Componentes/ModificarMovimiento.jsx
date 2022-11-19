@@ -57,8 +57,8 @@ export default function ModificarMovimiento(props) {
 
   return (
     <>
-        <button type="button" class="btn btn-success" onClick={modalShow}>
-            Ed
+        <button type="button" class="btn btn-warning btn-sm" onClick={modalShow}>
+        <i class="bi bi-pencil"></i>
         </button>
       <Modal show={show} onHide={modalClose} size="xl">
         <Modal.Header closeButton>
@@ -138,7 +138,7 @@ export default function ModificarMovimiento(props) {
         </Modal.Body>
         <Modal.Footer>
           <button type="button" class="btn btn-danger" onClick={modalClose}>
-            Cerrar
+            Cancelar
           </button>
           <button
             type="button"

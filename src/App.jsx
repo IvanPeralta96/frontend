@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./Componentes/Navbar";
+import Todos from './Componentes/Todos';
 
 
 const baseUrl = "http://localhost:3001";
@@ -28,6 +29,15 @@ function App() {
               <>
               <Navbar />
               <Movimientos movimientos={movimientos} baseUrl={baseUrl} />
+              </>
+            }
+          />
+          <Route
+            path="/stock"
+            element={
+              <>
+              <Navbar />
+              <Todos />
               </>
             }
           />

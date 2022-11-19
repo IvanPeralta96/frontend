@@ -1,9 +1,24 @@
 /* Movimientos */
 .table{
     font-size: 12px;
-    vertical-align: middle;
     margin-top: 80px;
 }
+.tableStock {
+    font-size: 12px;
+    margin-top: 80px;
+    color: white;
+}
+.tableCompras {
+    font-size: 12px;
+    margin-top: 80px;
+    color: white;
+}
+.tableVentas {
+    font-size: 12px;
+    margin-top: 80px;
+    color: white;
+}
+
 
 .colBlanca{
     background:none;
