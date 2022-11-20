@@ -6,14 +6,14 @@ import ModificarMovimiento from "./ModificarMovimiento";
 
 export default function Movimientos(props) {
   const [show, setShow] = useState(false);
-  const [fechaIng, setFechaIng] = useState();
-  const [descripcionIng, setDescripcionIng] = useState();
-  const [montoIng, setMontoIng] = useState();
-  const [fechaEg, setFechaEg] = useState();
-  const [descripcionEg, setDescripcionEg] = useState();
-  const [montoEg, setMontoEg] = useState();
-  const [naranjaX, setNaranjaX] = useState();
-  const [mercadoPago, setMercadoPago] = useState();
+  const [fecha_ingreso, setFecha_Ingreso] = useState("");
+  const [descrip_ingreso, setDescrip_Ingreso] = useState("");
+  const [monto_ingreso, setMonto_Ingreso] = useState("");
+  const [fecha_egreso, setFecha_Egreso] = useState("");
+  const [descrip_egreso, setDescrip_Egreso] = useState("");
+  const [monto_egreso, setMonto_Egreso] = useState("");
+  const [monto_naranjax, setMonto_NaranjaX] = useState("");
+  const [monto_mercadopago, setMonto_MercadoPago] = useState("");
   const [sumaIng, setSumaIng] = useState([])
   const [sumaEg, setSumaEg] = useState([])
   const [sumaNarX, setSumaNarX] = useState([])
@@ -23,19 +23,19 @@ export default function Movimientos(props) {
   
   useEffect(() => {
     const handlesumar = () => {
-      const sumarIng = props.movimientos.map((item) => item.montoIng)
+      const sumarIng = props.movimientos.map((item) => item.monto_ingreso)
         .reduce((previous, current) => {
           return previous + current;
         }, 0);
       setSumaIng(sumarIng);
 
-      const sumarEg = props.movimientos.map((item) => item.montoEg)
+      const sumarEg = props.movimientos.map((item) => item.monto_egreso)
         .reduce((previous, current) => {
           return previous + current;
         }, 0);
       setSumaEg(sumarEg);
 
-      const sumarNarX = props.movimientos.map((item) => item.naranjaX)
+      const sumarNarX = props.movimientos.map((item) => item.monto_naranjax)
         .reduce((previous, current) => {
           return previous + current;
         }, 0);
@@ -54,29 +54,41 @@ export default function Movimientos(props) {
 
   const modalClose = () => {
     setShow(false)
-    setFechaIng()
-    setDescripcionIng()
-    setMontoIng()
-    setFechaEg()
-    setDescripcionEg()
-    setMontoEg()
-    setNaranjaX()
-    setMercadoPago()
+    setFecha_Ingreso()
+    setDescrip_Ingreso()
+    setMonto_Ingreso()
+    setFecha_Egreso()
+    setDescrip_Egreso()
+    setMonto_Egreso()
+    setMonto_NaranjaX()
+    setMonto_MercadoPago()
   };
   const modalShow = () => {
     setShow(true)
   };
 
    async function guardarMovimiento(){
+    console.log(typeof(descrip_ingreso))
+    if (fecha_ingreso === undefined) {setFecha_Ingreso(null)}
+    if (descrip_ingreso === undefined) {setDescrip_Ingreso(null)}
+    if (monto_ingreso === undefined) {setMonto_Ingreso(null)}
+    if (fecha_egreso === undefined) {setFecha_Egreso(null)}
+    if (descrip_egreso === undefined) {setDescrip_Egreso(null)}
+    if (monto_egreso === undefined) {setMonto_Egreso(null)}
+    if (monto_naranjax === undefined) {setMonto_NaranjaX(null)}
+    if (monto_mercadopago === undefined) {setMonto_MercadoPago(null)}
+    console.log((descrip_ingreso))
+    console.log((monto_naranjax))
+
     await axios.post(props.baseUrl+"/movimientos",{
-      fechaIng: fechaIng,
-      descripcionIng: descripcionIng,
-      montoIng: parseInt(montoIng),
-      fechaEg: fechaEg,
-      descripcionEg: descripcionEg,
-      montoEg: parseInt(montoEg),
-      naranjaX: parseInt(naranjaX),
-      mercadoPago: parseInt(mercadoPago),
+      fecha_ingreso: fecha_ingreso,
+      descrip_ingreso: descrip_ingreso,
+      monto_ingreso: parseInt(monto_ingreso),
+      fecha_egreso: fecha_egreso,
+      descrip_egreso: descrip_egreso,
+      monto_egreso: parseInt(monto_egreso),
+      monto_naranjax: parseInt(monto_naranjax),
+      monto_mercadopago: parseInt(monto_mercadopago)
     })
     .then(() => {
       alert("Movimiento agregado")
@@ -166,15 +178,15 @@ export default function Movimientos(props) {
                     <ModificarMovimiento item={item} baseUrl={props.baseUrl} />
                   </div>
                 </td>
-                <th scope="row">{item.fechaIng}</th>
-                <td>{item.descripcionIng}</td>
-                <td>{item.montoIng}</td>
-                <th>{item.fechaEg}</th>
-                <td>{item.descripcionEg}</td>
-                <td>{item.montoEg}</td>
-                <td>{item.montoIng - item.montoEg}</td>
-                <td>{item.naranjaX}</td>
-                <td>{item.mercadoPago}</td>
+                <th scope="row">{item.fecha_ingreso}</th>
+                <td>{item.descrip_ingreso}</td>
+                <td>{item.monto_ingreso}</td>
+                <th>{item.fecha_egreso}</th>
+                <td>{item.descrip_egreso}</td>
+                <td>{item.monto_egreso}</td>
+                <td>{item.monto_ingreso - item.monto_egreso}</td>
+                <td>{item.monto_naranjax}</td>
+                <td>{item.monto_mercadopago}</td>
               </tr>
             </>
           ))}
@@ -199,14 +211,14 @@ export default function Movimientos(props) {
                     class="form-control"
                     id="iptFechaIng"
                     placeholder="Fecha Ingreso"
-                    onChange={e => setFechaIng(e.target.value)}
+                    onChange={e => setFecha_Ingreso(e.target.value)}
                     />
                   <input
                     type="text"
                     class="form-control"
                     id="iptDescripcionIng"
                     placeholder="Descripción"
-                    onChange={e => setDescripcionIng(e.target.value)}
+                    onChange={e => setDescrip_Ingreso(e.target.value)}
                   />
                   <span class="input-group-text">$</span>
                   <input
@@ -214,21 +226,21 @@ export default function Movimientos(props) {
                     class="form-control"
                     id="iptMontoIng"
                     placeholder="Precio"
-                    onChange={e => setMontoIng(e.target.value)}
+                    onChange={e => setMonto_Ingreso(e.target.value)}
                   />
                   <input
                     type="date"
                     class="form-control"
                     id="iptFechaEg"
                     placeholder="Fecha Egreso"
-                    onChange={e => setFechaEg(e.target.value)}
+                    onChange={e => setFecha_Egreso(e.target.value)}
                     />
                   <input
                     type="text"
                     class="form-control"
                     id="iptDescripcionEg"
                     placeholder="Descripción"
-                    onChange={e => setDescripcionEg(e.target.value)}
+                    onChange={e => setDescrip_Egreso(e.target.value)}
                   />
                 <span class="input-group-text">$</span>
                   <input
@@ -236,7 +248,7 @@ export default function Movimientos(props) {
                     class="form-control"
                     id="iptMontoEg"
                     placeholder="Precio"
-                    onChange={e => setMontoEg(e.target.value)}
+                    onChange={e => setMonto_Egreso(e.target.value)}
                   />
                 <span class="input-group-text">$</span>
                   <input
@@ -244,7 +256,7 @@ export default function Movimientos(props) {
                     class="form-control"
                     id="iptNaranjaX"
                     placeholder="Naranja X"
-                    onChange={e => setNaranjaX(e.target.value)}
+                    onChange={e => setMonto_NaranjaX(e.target.value)}
                   />
                 <span class="input-group-text">$</span>
                   <input
@@ -252,7 +264,7 @@ export default function Movimientos(props) {
                     class="form-control"
                     id="iptMercadoPago"
                     placeholder="Mercado Pago"
-                    onChange={e => setMercadoPago(e.target.value)}
+                    onChange={e => setMonto_MercadoPago(e.target.value)}
                   />
               </div>
             </Modal.Body>

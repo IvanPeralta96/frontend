@@ -25,27 +25,27 @@ export default function ModificarMovimiento(props) {
     setMercadoPago()
   };
   const modalShow = () => {
-    setFechaIng(props.item.fechaIng)
-    setDescripcionIng(props.item.descripcionIng)
-    setMontoIng(props.item.montoIng)
-    setFechaEg(props.item.fechaEg)
-    setDescripcionEg(props.item.descripcionEg)
-    setMontoEg(props.item.montoEg)
-    setNaranjaX(props.item.naranjaX)
-    setMercadoPago(props.item.mercadoPago)
+    setFechaIng(props.item.fecha_ingreso)
+    setDescripcionIng(props.item.descrip_ingreso)
+    setMontoIng(props.item.monto_ingreso)
+    setFechaEg(props.item.fecha_egreso)
+    setDescripcionEg(props.item.descrip_egreso)
+    setMontoEg(props.item.monto_egreso)
+    setNaranjaX(props.item.monto_naranjax)
+    setMercadoPago(props.item.monto_mercadopago)
     setShow(true)
   };
 
   const modificarMovimiento = async() => {
     await axios.put(props.baseUrl+"/movimientos/"+props.item.id,{
-      fechaIng: fechaIng,
-      descripcionIng: descripcionIng,
-      montoIng: parseInt(montoIng),
-      fechaEg: fechaEg,
-      descripcionEg: descripcionEg,
-      montoEg: parseInt(montoEg),
-      naranjaX: parseInt(naranjaX),
-      mercadoPago: parseInt(mercadoPago)
+      fecha_ingreso: fechaIng,
+      descrip_ing: descripcionIng,
+      monto_ingreso: parseInt(montoIng),
+      fecha_egreso: fechaEg,
+      descrip_egreso: descripcionEg,
+      monto_egreso: parseInt(montoEg),
+      monto_naranjax: parseInt(naranjaX),
+      monto_mercadopago: parseInt(mercadoPago)
     })
     .then(() => {
       alert("Movimiento modificado")
@@ -67,11 +67,11 @@ export default function ModificarMovimiento(props) {
         <Modal.Body>
           <div class="input-group mb-3">
               <input
-                type="date"
+                type="text"
                 class="form-control"
                 id="iptFechaIng"
                 placeholder="Fecha Ingreso"
-                defaultValue={props.item.fechaIng}
+                defaultValue={props.item.fecha_ingreso}
                 onChange={(e) => setFechaIng(e.target.value)}
               />
               <input
@@ -79,7 +79,7 @@ export default function ModificarMovimiento(props) {
                 class="form-control"
                 id="iptDescripcionIng"
                 placeholder="Descripción"
-                defaultValue={descripcionIng}
+                defaultValue={props.item.descrip_ingreso}
                 onChange={(e) => setDescripcionIng(e.target.value)}
               />
             <span class="input-group-text">$</span>
@@ -88,15 +88,15 @@ export default function ModificarMovimiento(props) {
                 class="form-control"
                 id="iptMontoIng"
                 placeholder="Precio"
-                defaultValue={props.item.montoIng}
+                defaultValue={props.item.monto_ingreso}
                 onChange={(e) => setMontoIng(e.target.value)}
               />
               <input
-                type="date"
+                type="text"
                 class="form-control"
                 id="iptFechaEg"
                 placeholder="Fecha Egreso"
-                defaultValue={props.item.fechaEg}
+                defaultValue={props.item.fecha_egreso}
                 onChange={(e) => setFechaEg(e.target.value)}
               />
               <input
@@ -104,7 +104,7 @@ export default function ModificarMovimiento(props) {
                 class="form-control"
                 id="iptDescripcionEg"
                 placeholder="Descripción"
-                defaultValue={props.item.descripcionEg}
+                defaultValue={props.item.descrip_egreso}
                 onChange={(e) => setDescripcionEg(e.target.value)}
               />
             <span class="input-group-text">$</span>
@@ -113,7 +113,7 @@ export default function ModificarMovimiento(props) {
                 class="form-control"
                 id="iptMontoEg"
                 placeholder="Precio"
-                defaultValue={props.item.montoEg}
+                defaultValue={props.item.monto_egreso}
                 onChange={(e) => setMontoEg(e.target.value)}
               />
             <span class="input-group-text">$</span>
@@ -122,7 +122,7 @@ export default function ModificarMovimiento(props) {
                 class="form-control"
                 id="iptNaranjaX"
                 placeholder="Naranja X"
-                defaultValue={props.item.naranjaX}
+                defaultValue={props.item.monto_naranjax}
                 onChange={(e) => setNaranjaX(e.target.value)}
               />
             <span class="input-group-text">$</span>
@@ -131,7 +131,7 @@ export default function ModificarMovimiento(props) {
                 class="form-control"
                 id="iptMercadoPago"
                 placeholder="Mercado Pago"
-                defaultValue={props.item.mercadoPago}
+                defaultValue={props.item.monto_mercadopago}
                 onChange={(e) => setMercadoPago(e.target.value)}
               />
           </div>
