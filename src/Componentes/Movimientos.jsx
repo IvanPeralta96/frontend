@@ -95,7 +95,7 @@ export default function Movimientos(props) {
 
 
   return (
-    <div class="container-xxl">
+    <div class="movimientos container-xxl">
       <table class="table table-success table-striped table-sm table-bordered align-middle mb-2">
         <thead>
           <tr>

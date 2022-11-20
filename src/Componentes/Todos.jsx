@@ -1,4 +1,4 @@
-import React from "react";
+import "../Components.css";
 import Compras from "./Compras";
 import Stock from "./Stock";
 import Ventas from "./Ventas";
@@ -6,13 +6,13 @@ import Ventas from "./Ventas";
 export default function Todos() {
   return (
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col">
         <Compras />
       </div>
-      <div class="col-sm-6">
+      <div class="col">
         <Ventas />
       </div>
-      <div class="col-sm-6">
+      <div class="col">
         <Stock />
       </div>
     </div>

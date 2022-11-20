@@ -3,7 +3,7 @@ import "../Components.css";
 export default function Ventas() {
   return (
     <div>
-      <table class="tableStock table-sm table-bordered align-middle mb-2">
+      <table class="tableStock table-sm table-bordered mb-2 ms-5">
         <thead>
           <tr>
             <th colSpan="6" class="bg-primary">

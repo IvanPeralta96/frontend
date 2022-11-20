@@ -3,7 +3,7 @@ import "../Components.css";
 export default function Stock() {
   return (
     <div>
-      <table class="tableStock table-sm table-bordered align-middle mb-2">
+      <table class="tableStock table-sm table-bordered mb-2">
         <thead>
           <tr>
             <th colSpan="9" class="bg-primary">

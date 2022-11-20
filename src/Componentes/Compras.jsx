@@ -3,7 +3,7 @@ import "../Components.css";
 export default function Compras() {
   return (
     <div>
-      <table class="tableStock table-sm table-bordered align-middle mb-2">
+      <table class="tableStock table-sm table-bordered mb-2">
         <thead>
           <tr>
             <th colSpan="8" class="bg-primary">

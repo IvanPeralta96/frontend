@@ -18,7 +18,6 @@ function App() {
     });
   }, [movimientos]);
 
-
   return (
     <div class="container-xxl App">
       <BrowserRouter>
