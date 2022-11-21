@@ -20,9 +20,22 @@ export default function Movimientos(props) {
   const [sumaMP, setSumaMP] = useState([])
   const [dateInicio, setDateInicio] = useState("")
   const [dateFin, setDateFin] = useState("")
+  const [dateMes, setDateMes] = useState()
   
   useEffect(() => {
+
     const handlesumar = () => {
+      axios.get(props.baseUrl+"/consultas/totalIngresos").then((response) => { setSumaIng(response.data[0].sumaingresos)})
+
+      axios.get(props.baseUrl+"/consultas/totalEgresos").then((response) => { setSumaEg(response.data[0].sumaegresos)})
+
+      axios.get(props.baseUrl+"/consultas/totalNaranjaX").then((response) => { setSumaNarX(response.data[0].sumanaranjax)})
+
+      axios.get(props.baseUrl+"/consultas/totalMercadoPago").then((response) => { setSumaMP(response.data[0].sumamercadopago)})
+    };
+
+
+    /* const handlesumar = () => {
       const sumarIng = props.movimientos.map((item) => item.monto_ingreso)
         .reduce((previous, current) => {
           return previous + current;
@@ -48,8 +61,12 @@ export default function Movimientos(props) {
       setSumaMP(sumarMP);
  
     };
-    handlesumar(); 
-  });
+    handlesumar();  */
+
+    
+    handlesumar()
+  },[props.baseUrl, props.movimientos]);
+  
 
 
   const modalClose = () => {
@@ -65,20 +82,10 @@ export default function Movimientos(props) {
   };
   const modalShow = () => {
     setShow(true)
+    console.log(dateMes)
   };
 
    async function guardarMovimiento(){
-    console.log(typeof(descrip_ingreso))
-    if (fecha_ingreso === undefined) {setFecha_Ingreso(null)}
-    if (descrip_ingreso === undefined) {setDescrip_Ingreso(null)}
-    if (monto_ingreso === undefined) {setMonto_Ingreso(null)}
-    if (fecha_egreso === undefined) {setFecha_Egreso(null)}
-    if (descrip_egreso === undefined) {setDescrip_Egreso(null)}
-    if (monto_egreso === undefined) {setMonto_Egreso(null)}
-    if (monto_naranjax === undefined) {setMonto_NaranjaX(null)}
-    if (monto_mercadopago === undefined) {setMonto_MercadoPago(null)}
-    console.log((descrip_ingreso))
-    console.log((monto_naranjax))
 
     await axios.post(props.baseUrl+"/movimientos",{
       fecha_ingreso: fecha_ingreso,
@@ -106,6 +113,7 @@ export default function Movimientos(props) {
   }
 
 
+
   return (
     <div class="movimientos container-xxl">
       <table class="table table-success table-striped table-sm table-bordered align-middle mb-2">
@@ -131,7 +139,7 @@ export default function Movimientos(props) {
           </tr>
           <tr>
             <th colSpan="3" rowSpan="2" class="colVerde bg-success align-middle">Introduzca el mes</th>
-            <th colSpan="2" rowSpan="2" class="bg-light align-middle"><input type="month" /></th>
+            <th colSpan="2" rowSpan="2" class="bg-light align-middle"><input type="month" value={dateMes} onChange={e=>setDateMes(e.target.value)} /></th>
             <th colSpan="3" class="colBlanca bg-light">Ingresos</th>
             <th colSpan="2" class="colBlanca bg-light"></th>
           </tr>
@@ -168,13 +176,13 @@ export default function Movimientos(props) {
             <th scope="col"></th>
           </tr>
         </thead>
-        <tbody class="table-group-divider">
-          {props.movimientos.map((item) => (
+        <tbody id="bodyMov" class="table-group-divider">
+          {props.movimientos.map((item, index) => (
             <>
               <tr>
                 <td>
                   <div>
-                    <button type="button" class="btn btn-danger btn-sm me-1" onClick={() => eliminarMovimiento(item.id)}><i class="bi bi-trash"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm me-1" onClick={() => eliminarMovimiento(item.id_movimiento)}><i class="bi bi-trash"></i></button>
                     <ModificarMovimiento item={item} baseUrl={props.baseUrl} />
                   </div>
                 </td>

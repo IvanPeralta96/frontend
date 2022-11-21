@@ -37,9 +37,9 @@ export default function ModificarMovimiento(props) {
   };
 
   const modificarMovimiento = async() => {
-    await axios.put(props.baseUrl+"/movimientos/"+props.item.id,{
+    await axios.put(props.baseUrl+"/movimientos/"+props.item.id_movimiento,{
       fecha_ingreso: fechaIng,
-      descrip_ing: descripcionIng,
+      descrip_ingreso: descripcionIng,
       monto_ingreso: parseInt(montoIng),
       fecha_egreso: fechaEg,
       descrip_egreso: descripcionEg,
@@ -67,7 +67,7 @@ export default function ModificarMovimiento(props) {
         <Modal.Body>
           <div class="input-group mb-3">
               <input
-                type="text"
+                type="date"
                 class="form-control"
                 id="iptFechaIng"
                 placeholder="Fecha Ingreso"
@@ -92,7 +92,7 @@ export default function ModificarMovimiento(props) {
                 onChange={(e) => setMontoIng(e.target.value)}
               />
               <input
-                type="text"
+                type="date"
                 class="form-control"
                 id="iptFechaEg"
                 placeholder="Fecha Egreso"
