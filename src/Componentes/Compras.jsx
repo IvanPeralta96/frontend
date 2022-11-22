@@ -1,6 +1,22 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import "../Components.css";
 
 export default function Compras() {
+  const [APIData, setAPIData] = useState([]);
+  
+  const getData = () => {
+    axios.get("http://localhost:4000/Compras").then((getData) => {
+      setAPIData(getData.data);
+    });
+  };
+  
+  useEffect(() => {
+    axios.get("http://localhost:4000/Compras").then((response) => {
+      
+      setAPIData(response.data);
+    });
+  }, []);
   return (
     <div>
       <table class="tableStock table-sm table-bordered mb-2">
@@ -22,8 +38,25 @@ export default function Compras() {
           </tr>
         </thead>
         <tbody>
+        
+        {APIData.map((data) => {
             
+            return (
+              <tr>
+                <th>{data.codigo}</th>
+                <th>{data.marca}</th>
+                <th>{data.modelo}</th>
+                <th>{data.fecha_compra}</th>
+                <th>{data.precio_compra}</th>
+                <th>{data.unidades}</th>
+                <th>{data.total}</th>
+                <th>{data.descripcion}</th>
+             
+              </tr>
+            );
+          })}
         </tbody>
+      
       </table>
     </div>
   );
